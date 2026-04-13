@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#7b0000">
+<title>இனிய தமிழ் புத்தாண்டு</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;600;700;900&family=Yatra+One&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --maroon: #7b0000;
+    --deep-maroon: #4a0000;
+    --gold: #ffd700;
+    --gold-dark: #c9a800;
+    --orange: #ff9800;
+    --orange-light: #ffb74d;
+    --cream: #fff8e1;
+    --white: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans Tamil', sans-serif;
+    background: linear-gradient(160deg, var(--deep-maroon) 0%, var(--maroon) 35%, #a33000 65%, var(--orange) 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* ===== DECORATIVE BORDER FRAME ===== */
+  .border-frame {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 5;
+    border: 6px solid transparent;
+    background:
+      linear-gradient(var(--deep-maroon), var(--deep-maroon)) padding-box,
+      repeating-linear-gradient(90deg, var(--gold) 0px, var(--gold) 10px, transparent 10px, transparent 20px,
+        var(--orange) 20px, var(--orange) 30px, transparent 30px, transparent 40px) border-box;
+  }
+
+  /* ===== KOLAM PATTERN OVERLAY ===== */
+  .kolam-overlay {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.04;
+    background-image:
+      radial-gradient(circle, var(--gold) 1px, transparent 1px),
+      radial-gradient(circle, var(--gold) 1px, transparent 1px);
+    background-size: 30px 30px;
+    background-position: 0 0, 15px 15px;
+  }
+
+  /* ===== PAGE 1 — WELCOME ===== */
+  #page1 {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 16px;
+    position: relative;
+    z-index: 10;
+  }
+
+  /* Torana - hanging garland */
+  .torana {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    overflow: visible;
+    z-index: 30;
+    pointer-events: none;
+  }
+  .torana-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+  }
+  /* Individual hanging items on the garland */
+  .torana-item {
+    position: absolute;
+    top: 0;
+    transform-origin: top center;
+    animation: toranaSwing 3.5s ease-in-out infinite;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1px;
+  }
+  .torana-item:nth-child(odd)  { animation-direction: alternate; }
+  .torana-item:nth-child(even) { animation-direction: alternate-reverse; }
+  .torana-item .t-leaf { font-size: 22px; line-height:1; }
+  .torana-item .t-mango { font-size: 16px; line-height:1; }
+  .torana-item .t-flower { font-size: 14px; line-height:1; }
+  @keyframes toranaSwing {
+    0%   { transform: rotate(-6deg); }
+    100% { transform: rotate(6deg); }
+  }
+  .torana-rope {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    pointer-events: none;
+  }
+
+  /* Banana trees flanking */
+  .banana-trees {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none;
+    align-items: flex-end;
+    z-index: 28;
+  }
+  .banana-tree {
+    font-size: 90px;
+    line-height: 1;
+    filter: drop-shadow(0 0 16px rgba(0,200,0,0.5));
+    animation: treeSway 4s ease-in-out infinite;
+    align-self: flex-start;
+    margin-top: -10px;
+  }
+  .banana-tree.left  { animation-direction: alternate; margin-left: -10px; }
+  .banana-tree.right { animation-direction: alternate-reverse; margin-right: -10px; }
+  @keyframes treeSway {
+    0%   { transform: rotate(-4deg); }
+    100% { transform: rotate(4deg); }
+  }
+
+  /* Kuthu vilakku lamps */
+  .lamps {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 60px;
+    pointer-events: none;
+  }
+  .lamp {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: lampGlow 1.5s ease-in-out infinite alternate;
+  }
+  @keyframes lampGlow {
+    0%   { filter: drop-shadow(0 0 6px var(--gold)) drop-shadow(0 0 12px var(--orange)); }
+    100% { filter: drop-shadow(0 0 14px var(--gold)) drop-shadow(0 0 28px var(--orange)); }
+  }
+  .lamp-svg {
+    width: 48px;
+    height: 68px;
+  }
+  .flame {
+    width: 14px;
+    height: 22px;
+    background: radial-gradient(ellipse at 50% 80%, #fff 0%, var(--gold) 30%, var(--orange) 70%, transparent 100%);
+    border-radius: 50% 50% 30% 30%;
+    margin-bottom: -4px;
+    animation: flicker 0.8s ease-in-out infinite alternate;
+    position: relative;
+    z-index: 2;
+  }
+  @keyframes flicker {
+    0%   { transform: scaleX(1)   scaleY(1)   rotate(-3deg); opacity: 1; }
+    100% { transform: scaleX(0.8) scaleY(1.2) rotate(3deg);  opacity: 0.85; }
+  }
+
+  /* Title card */
+  .title-card {
+    background: linear-gradient(135deg, rgba(123,0,0,0.7) 0%, rgba(74,0,0,0.85) 100%);
+    border: 2px solid var(--gold);
+    border-radius: 20px;
+    padding: 24px 28px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 0 30px rgba(255,215,0,0.3), inset 0 0 20px rgba(255,152,0,0.05);
+    max-width: 360px;
+    width: 100%;
+    margin: 60px 0 20px;
+  }
+  .title-card::before,
+  .title-card::after {
+    content: '✦';
+    position: absolute;
+    color: var(--gold);
+    font-size: 20px;
+    opacity: 0.6;
+  }
+  .title-card::before { top: 8px; left: 12px; }
+  .title-card::after  { bottom: 8px; right: 12px; }
+
+  .title-flower-row {
+    font-size: 22px;
+    letter-spacing: 4px;
+    margin-bottom: 8px;
+    animation: flowerPulse 2s ease-in-out infinite;
+  }
+  @keyframes flowerPulse {
+    0%,100% { transform: scale(1); }
+    50%      { transform: scale(1.08); }
+  }
+  .title-main {
+    font-family: 'Noto Sans Tamil', sans-serif;
+    font-size: clamp(22px, 6vw, 30px);
+    font-weight: 900;
+    color: var(--gold);
+    text-shadow: 0 0 20px rgba(255,215,0,0.6), 2px 2px 0 var(--deep-maroon);
+    line-height: 1.3;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+  .title-sub {
+    font-size: 13px;
+    color: var(--orange-light);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  /* Input area */
+  .input-area {
+    max-width: 360px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 10px;
+  }
+  .input-wrapper {
+    position: relative;
+  }
+  .name-input {
+    width: 100%;
+    padding: 16px 20px;
+    border: 2px solid var(--gold-dark);
+    border-radius: 50px;
+    background: rgba(255,255,255,0.1);
+    color: var(--white);
+    font-family: 'Noto Sans Tamil', sans-serif;
+    font-size: 16px;
+    text-align: center;
+    outline: none;
+    transition: all 0.3s;
+    backdrop-filter: blur(8px);
+  }
+  .name-input::placeholder { color: rgba(255,215,0,0.5); }
+  .name-input:focus {
+    border-color: var(--gold);
+    background: rgba(255,255,255,0.15);
+    box-shadow: 0 0 20px rgba(255,215,0,0.3);
+  }
+
+  .celebrate-btn {
+    width: 100%;
+    padding: 18px;
+    background: linear-gradient(135deg, var(--gold) 0%, var(--orange) 100%);
+    color: var(--deep-maroon);
+    font-family: 'Noto Sans Tamil', sans-serif;
+    font-size: 18px;
+    font-weight: 900;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(255,215,0,0.4), 0 2px 6px rgba(0,0,0,0.3);
+    transition: transform 0.15s, box-shadow 0.15s;
+    letter-spacing: 1px;
+  }
+  .celebrate-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, transparent 60%);
+  }
+  .celebrate-btn:active {
+    transform: scale(0.97);
+    box-shadow: 0 3px 10px rgba(255,215,0,0.3);
+  }
+  .celebrate-btn .btn-sparkle { margin-right: 6px; animation: sparkle 1s ease-in-out infinite; }
+  @keyframes sparkle {
+    0%,100% { transform: rotate(0deg) scale(1); }
+    50%      { transform: rotate(20deg) scale(1.2); }
+  }
+
+  /* ===== PAGE 2 — CELEBRATION ===== */
+  #page2 {
+    display: none;
+    min-height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 16px 100px;
+    position: relative;
+    z-index: 10;
+  }
+  #page2.active { display: flex; }
+
+  canvas#fireworks {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 20;
+  }
+
+  /* Flower rain */
+  .flower-rain {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 15;
+    overflow: hidden;
+  }
+  .petal {
+    position: absolute;
+    top: -40px;
+    font-size: 20px;
+    animation: fall linear infinite;
+    opacity: 0.85;
+  }
+  @keyframes fall {
+    0%   { transform: translateY(0) rotate(0deg) scale(1); opacity: 0.9; }
+    80%  { opacity: 0.7; }
+    100% { transform: translateY(110vh) rotate(720deg) scale(0.6); opacity: 0; }
+  }
+
+  /* Greeting card */
+  .greeting-container {
+    max-width: 400px;
+    width: 100%;
+    margin-top: 30px;
+    position: relative;
+    z-index: 25;
+  }
+  .year-badge {
+    text-align: center;
+    margin-bottom: 16px;
+  }
+  .year-badge span {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--gold), var(--orange));
+    color: var(--deep-maroon);
+    font-size: 13px;
+    font-weight: 900;
+    padding: 6px 20px;
+    border-radius: 30px;
+    letter-spacing: 3px;
+    box-shadow: 0 3px 12px rgba(255,215,0,0.4);
+  }
+
+  .greeting-card {
+    background: linear-gradient(160deg, rgba(74,0,0,0.9) 0%, rgba(40,0,0,0.95) 100%);
+    border: 2px solid var(--gold);
+    border-radius: 24px;
+    padding: 28px 24px;
+    text-align: center;
+    position: relative;
+    box-shadow:
+      0 0 40px rgba(255,215,0,0.25),
+      0 0 80px rgba(255,152,0,0.1),
+      inset 0 0 30px rgba(255,152,0,0.05);
+  }
+  .greeting-card::before {
+    content: '';
+    position: absolute;
+    inset: 4px;
+    border: 1px solid rgba(255,215,0,0.2);
+    border-radius: 20px;
+    pointer-events: none;
+  }
+
+  .corner-deco {
+    position: absolute;
+    font-size: 24px;
+    opacity: 0.5;
+    animation: cornerPulse 2.5s ease-in-out infinite alternate;
+  }
+  @keyframes cornerPulse { 0% { opacity: 0.3; } 100% { opacity: 0.7; } }
+  .corner-deco.tl { top: 10px;  left: 12px; }
+  .corner-deco.tr { top: 10px;  right: 12px; }
+  .corner-deco.bl { bottom: 10px; left: 12px; }
+  .corner-deco.br { bottom: 10px; right: 12px; }
+
+  .greeting-icon { font-size: 42px; margin-bottom: 8px; animation: iconBounce 1.5s ease-in-out infinite; }
+  @keyframes iconBounce {
+    0%,100% { transform: translateY(0) scale(1); }
+    50%      { transform: translateY(-6px) scale(1.1); }
+  }
+
+  .greeting-name {
+    font-size: clamp(20px, 5.5vw, 26px);
+    font-weight: 900;
+    color: var(--gold);
+    text-shadow: 0 0 20px rgba(255,215,0,0.5);
+    margin-bottom: 6px;
+    line-height: 1.35;
+  }
+  .greeting-text {
+    font-size: clamp(15px, 4vw, 18px);
+    color: var(--cream);
+    line-height: 1.65;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 12px 0;
+    color: var(--gold);
+    opacity: 0.5;
+    font-size: 12px;
+    letter-spacing: 3px;
+  }
+  .divider::before, .divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  .sender-text {
+    font-size: 14px;
+    color: var(--orange-light);
+    font-style: italic;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+  .sender-name {
+    color: var(--gold);
+    font-style: normal;
+    font-weight: 900;
+  }
+
+  /* Buttons row */
+  .action-btns {
+    max-width: 400px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+    position: relative;
+    z-index: 25;
+  }
+
+  .whatsapp-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 18px;
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    color: white;
+    font-family: 'Noto Sans Tamil', sans-serif;
+    font-size: 17px;
+    font-weight: 900;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(37,211,102,0.35);
+    transition: transform 0.15s, box-shadow 0.15s;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+  }
+  .whatsapp-btn:active { transform: scale(0.97); }
+  .whatsapp-icon { font-size: 22px; }
+
+  .speech-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px;
+    background: rgba(255,215,0,0.15);
+    color: var(--gold);
+    font-family: 'Noto Sans Tamil', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    border: 2px solid rgba(255,215,0,0.4);
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.2s;
+    backdrop-filter: blur(6px);
+    letter-spacing: 0.5px;
+  }
+  .speech-btn:active, .speech-btn.speaking {
+    background: rgba(255,215,0,0.25);
+    border-color: var(--gold);
+  }
+
+  /* Floating top decoration */
+  .top-deco {
+    text-align: center;
+    font-size: 28px;
+    letter-spacing: 6px;
+    margin-bottom: 4px;
+    animation: decoFloat 3s ease-in-out infinite alternate;
+  }
+  @keyframes decoFloat {
+    0%   { transform: translateY(0); }
+    100% { transform: translateY(-6px); }
+  }
+
+  /* Rangoli ring */
+  .rangoli-ring {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: conic-gradient(var(--gold), var(--orange), #e91e63, var(--gold), var(--orange), var(--deep-maroon), var(--gold));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 12px auto;
+    animation: spin 8s linear infinite;
+    box-shadow: 0 0 20px rgba(255,215,0,0.4);
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .rangoli-inner {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--deep-maroon);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    animation: spin 8s linear infinite reverse;
+  }
+
+  /* Toast */
+  .toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(80px);
+    background: rgba(0,0,0,0.85);
+    color: var(--gold);
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 700;
+    border: 1px solid var(--gold-dark);
+    z-index: 999;
+    transition: transform 0.4s ease;
+    white-space: nowrap;
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+
+  /* Responsive tweaks */
+  @media (max-height: 600px) {
+    .banana-trees { height: 150px; }
+    .banana-tree  { font-size: 55px; }
+    .title-card   { margin: 40px 0 12px; padding: 18px 20px; }
+    .lamps        { padding: 0 40px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="kolam-overlay"></div>
+<div class="border-frame"></div>
+
+<!-- ====== PAGE 1 ====== -->
+<div id="page1">
+  <!-- Torana garland with rope and hanging items -->
+  <div class="torana" id="toranaWrap">
+    <!-- SVG rope drawn as catenary curves between banana trees -->
+    <svg class="torana-rope" id="toranaRopeSvg" viewBox="0 0 400 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Main rope -->
+      <path id="toranaRopePath" d="M0,8 Q100,55 200,40 Q300,55 400,8" 
+            stroke="#8B4513" stroke-width="3" fill="none" opacity="0.9"/>
+      <!-- Gold shimmer rope overlay -->
+      <path d="M0,8 Q100,55 200,40 Q300,55 400,8" 
+            stroke="#ffd700" stroke-width="1" fill="none" opacity="0.5" stroke-dasharray="6 8"/>
+    </svg>
+    <!-- Hanging items container -->
+    <div id="toranaLeaves"></div>
+  </div>
+
+  <!-- Banana trees -->
+  <div class="banana-trees">
+    <div class="banana-tree left">🌴</div>
+    <div class="banana-tree right">🌴</div>
+  </div>
+
+  <!-- Kuthu Vilakku lamps -->
+  <div class="lamps">
+    <div class="lamp" id="lampLeft">
+      <div class="flame"></div>
+      <svg class="lamp-svg" viewBox="0 0 48 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="24" cy="14" rx="13" ry="6" fill="#c9a800" opacity="0.9"/>
+        <rect x="20" y="14" width="8" height="26" rx="2" fill="#c9a800"/>
+        <path d="M14 40 Q24 44 34 40 L36 56 Q24 62 12 56 Z" fill="#ffd700"/>
+        <path d="M14 40 Q24 44 34 40 L34 42 Q24 46 14 42 Z" fill="#ff9800" opacity="0.6"/>
+        <ellipse cx="24" cy="56" rx="14" ry="5" fill="#c9a800"/>
+        <ellipse cx="24" cy="57" rx="18" ry="4" fill="#7b0000" opacity="0.5"/>
+        <!-- decorative rings -->
+        <path d="M18 22 Q24 24 30 22" stroke="#ff9800" stroke-width="1.5" fill="none"/>
+        <path d="M18 28 Q24 30 30 28" stroke="#ff9800" stroke-width="1.5" fill="none"/>
+      </svg>
+    </div>
+    <div class="lamp" id="lampRight">
+      <div class="flame"></div>
+      <svg class="lamp-svg" viewBox="0 0 48 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="24" cy="14" rx="13" ry="6" fill="#c9a800" opacity="0.9"/>
+        <rect x="20" y="14" width="8" height="26" rx="2" fill="#c9a800"/>
+        <path d="M14 40 Q24 44 34 40 L36 56 Q24 62 12 56 Z" fill="#ffd700"/>
+        <path d="M14 40 Q24 44 34 40 L34 42 Q24 46 14 42 Z" fill="#ff9800" opacity="0.6"/>
+        <ellipse cx="24" cy="56" rx="14" ry="5" fill="#c9a800"/>
+        <ellipse cx="24" cy="57" rx="18" ry="4" fill="#7b0000" opacity="0.5"/>
+        <path d="M18 22 Q24 24 30 22" stroke="#ff9800" stroke-width="1.5" fill="none"/>
+        <path d="M18 28 Q24 30 30 28" stroke="#ff9800" stroke-width="1.5" fill="none"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Title -->
+  <div class="title-card">
+    <div class="title-flower-row">🌸 🌺 🌼 🌺 🌸</div>
+    <div class="title-main">இனிய தமிழ் புத்தாண்டு</div>
+    <div style="font-size:22px;margin:8px 0;">🎊 ✨ 🎊</div>
+    <div class="title-sub">TAMIL NEW YEAR 2026</div>
+  </div>
+
+  <!-- Input -->
+  <div class="input-area">
+    <div class="input-wrapper">
+      <input class="name-input" id="nameInput" type="text" placeholder="உங்கள் பெயர் / Your Name" maxlength="30" autocomplete="off">
+    </div>
+    <button class="celebrate-btn" onclick="startCelebration()">
+      <span class="btn-sparkle">✨</span> கொண்டாடுவோம்! Celebrate
+    </button>
+  </div>
+</div>
+
+<!-- ====== PAGE 2 ====== -->
+<div id="page2">
+  <canvas id="fireworks"></canvas>
+  <div class="flower-rain" id="flowerRain"></div>
+
+  <div class="top-deco">🌸 🌺 🪔 🌺 🌸</div>
+
+  <div class="rangoli-ring">
+    <div class="rangoli-inner">🌼</div>
+  </div>
+
+  <div class="greeting-container">
+    <div class="year-badge"><span>✦ தமிழ் புத்தாண்டு 2026 ✦</span></div>
+
+    <div class="greeting-card">
+      <span class="corner-deco tl">🌸</span>
+      <span class="corner-deco tr">🌸</span>
+      <span class="corner-deco bl">🪔</span>
+      <span class="corner-deco br">🪔</span>
+
+      <div class="greeting-icon">🎉</div>
+      <div class="greeting-name" id="greetingName"></div>
+      <div class="greeting-text">
+        அவர்களுக்கும் அவர்களுடைய<br>குடும்பத்தினருக்கும்<br>
+        <span style="color:var(--gold);font-size:1.1em;">இனிய தமிழ் புத்தாண்டு</span><br>
+        <span style="color:var(--orange-light);">நல்வாழ்த்துக்கள்! 🌟</span>
+      </div>
+      <div class="divider">✦ ✦ ✦</div>
+      <div class="sender-text" id="senderLine"></div>
+    </div>
+  </div>
+
+  <div class="action-btns">
+    <button class="speech-btn" id="speechBtn" onclick="speakGreeting()">
+      🔊 குரல் வாழ்த்து கேளுங்கள் (Listen)
+    </button>
+    <button class="whatsapp-btn" onclick="shareWhatsApp()">
+      <span class="whatsapp-icon">💬</span> WhatsApp-ல் பகிரவும்
+    </button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ===================== TORANA GARLAND =====================
+(function buildTorana() {
+  const container = document.getElementById('toranaLeaves');
+  const svg = document.getElementById('toranaRopeSvg');
+  
+  // Items to hang: alternating leaves, flowers, mangoes
+  const items = [
+    { top: '🍃', bot: '🥭' },
+    { top: '🌺', bot: null },
+    { top: '🍃', bot: '🌼' },
+    { top: '🌿', bot: '🥭' },
+    { top: '🌸', bot: null },
+    { top: '🍃', bot: '🥭' },
+    { top: '🌺', bot: null },
+    { top: '🍃', bot: '🌼' },
+    { top: '🌿', bot: '🥭' },
+    { top: '🌸', bot: null },
+    { top: '🍃', bot: '🥭' },
+    { top: '🌺', bot: null },
+    { top: '🍃', bot: '🌼' },
+  ];
+
+  // Catenary function — matches the SVG path Q100,55 200,40 Q300,55 400,8 → normalised 0-1
+  function getRopeY(t) {
+    // Two quadratic bezier segments: 0→0.5 and 0.5→1
+    if (t <= 0.5) {
+      const u = t * 2; // 0→1 in first half
+      // P0=(0,8) P1=(100,55) P2=(200,40) in 400×60 viewBox → normalise to percent
+      const p0y = 8/60, p1y = 55/60, p2y = 40/60;
+      return (1-u)*(1-u)*p0y + 2*(1-u)*u*p1y + u*u*p2y;
+    } else {
+      const u = (t - 0.5) * 2; // 0→1 in second half
+      // P0=(200,40) P1=(300,55) P2=(400,8) in 400×60 viewBox
+      const p0y = 40/60, p1y = 55/60, p2y = 8/60;
+      return (1-u)*(1-u)*p0y + 2*(1-u)*u*p1y + u*u*p2y;
+    }
+  }
+
+  const count = items.length;
+  // Distribute items from ~5% to ~95% across the width
+  for (let i = 0; i < count; i++) {
+    const t = 0.05 + (i / (count - 1)) * 0.9;
+    const xPct = t * 100;
+    const yPct = getRopeY(t) * 100; // as % of 120px tall torana div
+    const item = items[i % items.length];
+    const delay = (Math.random() * 2).toFixed(2);
+    const dur   = (2.5 + Math.random() * 2).toFixed(2);
+
+    const el = document.createElement('div');
+    el.className = 'torana-item';
+    el.style.left = xPct + '%';
+    el.style.top  = yPct + '%';
+    el.style.animationDelay = delay + 's';
+    el.style.animationDuration = dur + 's';
+
+    el.innerHTML = `<span class="t-leaf">${item.top}</span>${item.bot ? `<span class="t-mango">${item.bot}</span>` : ''}`;
+    container.appendChild(el);
+  }
+})();
+
+// ===================== URL PARAMS =====================
+const urlParams = new URLSearchParams(window.location.search);
+let fromName = urlParams.get('from') || '';
+
+// ===================== FLOWER RAIN =====================
+const flowerEmojis = ['🌸','🌺','🌼','🌻','🏵️','✿','❀'];
+function startFlowerRain() {
+  const container = document.getElementById('flowerRain');
+  container.innerHTML = '';
+  const count = 30;
+  for (let i = 0; i < count; i++) {
+    const p = document.createElement('div');
+    p.className = 'petal';
+    p.textContent = flowerEmojis[Math.floor(Math.random() * flowerEmojis.length)];
+    const left  = Math.random() * 100;
+    const delay = Math.random() * 5;
+    const dur   = 4 + Math.random() * 5;
+    const size  = 14 + Math.random() * 14;
+    p.style.cssText = `left:${left}%;animation-delay:${delay}s;animation-duration:${dur}s;font-size:${size}px;`;
+    container.appendChild(p);
+  }
+  // Keep generating new petals
+  setInterval(() => {
+    const p = document.createElement('div');
+    p.className = 'petal';
+    p.textContent = flowerEmojis[Math.floor(Math.random() * flowerEmojis.length)];
+    const left = Math.random() * 100;
+    const dur  = 4 + Math.random() * 5;
+    const size = 14 + Math.random() * 14;
+    p.style.cssText = `left:${left}%;animation-duration:${dur}s;font-size:${size}px;`;
+    container.appendChild(p);
+    setTimeout(() => p.remove(), dur * 1000 + 500);
+  }, 400);
+}
+
+// ===================== FIREWORKS =====================
+let canvas, ctx;
+function initFireworks() {
+  canvas = document.getElementById('fireworks');
+  canvas.width  = window.innerWidth;
+  canvas.height = window.innerHeight;
+  ctx = canvas.getContext('2d');
+  window.addEventListener('resize', () => {
+    canvas.width  = window.innerWidth;
+    canvas.height = window.innerHeight;
+  });
+}
+
+class Particle {
+  constructor(x, y, color) {
+    this.x = x; this.y = y;
+    const angle = Math.random() * Math.PI * 2;
+    const speed = 2 + Math.random() * 6;
+    this.vx = Math.cos(angle) * speed;
+    this.vy = Math.sin(angle) * speed;
+    this.alpha = 1;
+    this.color = color;
+    this.radius = 2 + Math.random() * 3;
+    this.decay = 0.012 + Math.random() * 0.01;
+    this.gravity = 0.08;
+  }
+  update() {
+    this.x += this.vx;
+    this.y += this.vy;
+    this.vy += this.gravity;
+    this.vx *= 0.98;
+    this.alpha -= this.decay;
+  }
+  draw() {
+    ctx.save();
+    ctx.globalAlpha = Math.max(0, this.alpha);
+    ctx.fillStyle = this.color;
+    ctx.shadowBlur = 8;
+    ctx.shadowColor = this.color;
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+  }
+}
+
+let particles = [];
+const fwColors = ['#ffd700','#ff9800','#ff4444','#ff69b4','#00ffcc','#fff','#ffb74d','#e91e63','#00e5ff'];
+
+function launchFirework() {
+  const cx = canvas.width  * (0.3 + Math.random() * 0.4);
+  const cy = canvas.height * (0.2 + Math.random() * 0.4);
+  const color = fwColors[Math.floor(Math.random() * fwColors.length)];
+  for (let i = 0; i < 100; i++) particles.push(new Particle(cx, cy, color));
+  playFireworkSound();
+}
+
+let animFrameId;
+function animateFireworks() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particles = particles.filter(p => p.alpha > 0);
+  particles.forEach(p => { p.update(); p.draw(); });
+  animFrameId = requestAnimationFrame(animateFireworks);
+}
+
+let fwInterval;
+function startFireworks() {
+  initFireworks();
+  animateFireworks();
+  // Launch 3 quick bursts then periodic
+  setTimeout(() => launchFirework(), 200);
+  setTimeout(() => launchFirework(), 600);
+  setTimeout(() => launchFirework(), 1000);
+  fwInterval = setInterval(() => launchFirework(), 2500);
+  setTimeout(() => { clearInterval(fwInterval); }, 20000);
+}
+
+// ===================== SOUND =====================
+const AudioCtx = window.AudioContext || window.webkitAudioContext;
+let audioCtx;
+
+function getAudioCtx() {
+  if (!audioCtx) {
+    try { audioCtx = new AudioCtx(); } catch(e) {}
+  }
+  return audioCtx;
+}
+
+function playBellSound() {
+  const ac = getAudioCtx(); if (!ac) return;
+  const osc = ac.createOscillator();
+  const gain = ac.createGain();
+  osc.connect(gain); gain.connect(ac.destination);
+  osc.type = 'sine';
+  osc.frequency.setValueAtTime(880, ac.currentTime);
+  osc.frequency.exponentialRampToValueAtTime(440, ac.currentTime + 1.5);
+  gain.gain.setValueAtTime(0.4, ac.currentTime);
+  gain.gain.exponentialRampToValueAtTime(0.001, ac.currentTime + 2);
+  osc.start(ac.currentTime);
+  osc.stop(ac.currentTime + 2);
+  // Double bell
+  setTimeout(() => {
+    const o2 = ac.createOscillator();
+    const g2 = ac.createGain();
+    o2.connect(g2); g2.connect(ac.destination);
+    o2.type = 'sine';
+    o2.frequency.setValueAtTime(660, ac.currentTime);
+    o2.frequency.exponentialRampToValueAtTime(330, ac.currentTime + 1.2);
+    g2.gain.setValueAtTime(0.3, ac.currentTime);
+    g2.gain.exponentialRampToValueAtTime(0.001, ac.currentTime + 1.5);
+    o2.start(ac.currentTime); o2.stop(ac.currentTime + 1.5);
+  }, 400);
+}
+
+function playFireworkSound() {
+  const ac = getAudioCtx(); if (!ac) return;
+  const now = ac.currentTime;
+
+  // 1) Whistle — rising pitch going up before the boom
+  const whistleOsc = ac.createOscillator();
+  const whistleGain = ac.createGain();
+  whistleOsc.connect(whistleGain); whistleGain.connect(ac.destination);
+  whistleOsc.type = 'sawtooth';
+  whistleOsc.frequency.setValueAtTime(300, now);
+  whistleOsc.frequency.exponentialRampToValueAtTime(1800, now + 0.35);
+  whistleGain.gain.setValueAtTime(0.18, now);
+  whistleGain.gain.linearRampToValueAtTime(0.0, now + 0.35);
+  whistleOsc.start(now); whistleOsc.stop(now + 0.35);
+
+  // 2) BOOM — low freq burst
+  const boomBufSize = Math.floor(ac.sampleRate * 0.6);
+  const boomBuf = ac.createBuffer(1, boomBufSize, ac.sampleRate);
+  const boomData = boomBuf.getChannelData(0);
+  for (let i = 0; i < boomBufSize; i++) {
+    const t = i / boomBufSize;
+    // heavy initial thud + tail
+    boomData[i] = (Math.random() * 2 - 1) * Math.pow(1 - t, 1.5) * (t < 0.05 ? 1 : 0.4);
+  }
+  const boomSrc = ac.createBufferSource();
+  boomSrc.buffer = boomBuf;
+  const boomFilter = ac.createBiquadFilter();
+  boomFilter.type = 'lowpass';
+  boomFilter.frequency.value = 220;
+  const boomGain = ac.createGain();
+  boomGain.gain.setValueAtTime(0, now + 0.3);
+  boomGain.gain.linearRampToValueAtTime(0.9, now + 0.34);
+  boomGain.gain.exponentialRampToValueAtTime(0.001, now + 0.95);
+  boomSrc.connect(boomFilter); boomFilter.connect(boomGain); boomGain.connect(ac.destination);
+  boomSrc.start(now + 0.3);
+
+  // 3) CRACK — mid freq burst (the sharp crack of the shell)
+  const crackBufSize = Math.floor(ac.sampleRate * 0.08);
+  const crackBuf = ac.createBuffer(1, crackBufSize, ac.sampleRate);
+  const crackData = crackBuf.getChannelData(0);
+  for (let i = 0; i < crackBufSize; i++) {
+    crackData[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / crackBufSize, 3);
+  }
+  const crackSrc = ac.createBufferSource();
+  crackSrc.buffer = crackBuf;
+  const crackFilter = ac.createBiquadFilter();
+  crackFilter.type = 'bandpass';
+  crackFilter.frequency.value = 1200;
+  crackFilter.Q.value = 0.8;
+  const crackGain = ac.createGain();
+  crackGain.gain.setValueAtTime(0.7, now + 0.33);
+  crackGain.gain.exponentialRampToValueAtTime(0.001, now + 0.42);
+  crackSrc.connect(crackFilter); crackFilter.connect(crackGain); crackGain.connect(ac.destination);
+  crackSrc.start(now + 0.33);
+
+  // 4) SPARKLE crackle — multiple tiny pops (stars fizzing)
+  for (let s = 0; s < 8; s++) {
+    const delay = now + 0.38 + s * 0.07 + Math.random() * 0.05;
+    const sBufSize = Math.floor(ac.sampleRate * 0.04);
+    const sBuf = ac.createBuffer(1, sBufSize, ac.sampleRate);
+    const sData = sBuf.getChannelData(0);
+    for (let i = 0; i < sBufSize; i++) {
+      sData[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / sBufSize, 2);
+    }
+    const sSrc = ac.createBufferSource();
+    sSrc.buffer = sBuf;
+    const sFilter = ac.createBiquadFilter();
+    sFilter.type = 'highpass';
+    sFilter.frequency.value = 2000 + Math.random() * 3000;
+    const sGain = ac.createGain();
+    sGain.gain.setValueAtTime(0.15 + Math.random() * 0.12, delay);
+    sGain.gain.exponentialRampToValueAtTime(0.001, delay + 0.05);
+    sSrc.connect(sFilter); sFilter.connect(sGain); sGain.connect(ac.destination);
+    sSrc.start(delay);
+  }
+
+  // 5) Shimmer tail — high freq noise fading out (sparkling stars)
+  const shimBufSize = Math.floor(ac.sampleRate * 1.2);
+  const shimBuf = ac.createBuffer(1, shimBufSize, ac.sampleRate);
+  const shimData = shimBuf.getChannelData(0);
+  for (let i = 0; i < shimBufSize; i++) {
+    shimData[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / shimBufSize, 2.5);
+  }
+  const shimSrc = ac.createBufferSource();
+  shimSrc.buffer = shimBuf;
+  const shimFilter = ac.createBiquadFilter();
+  shimFilter.type = 'highpass';
+  shimFilter.frequency.value = 3500;
+  const shimGain = ac.createGain();
+  shimGain.gain.setValueAtTime(0.0, now + 0.35);
+  shimGain.gain.linearRampToValueAtTime(0.18, now + 0.4);
+  shimGain.gain.exponentialRampToValueAtTime(0.001, now + 1.55);
+  shimSrc.connect(shimFilter); shimFilter.connect(shimGain); shimGain.connect(ac.destination);
+  shimSrc.start(now + 0.35);
+}
+
+function playFestivalMusic() {
+  const ac = getAudioCtx(); if (!ac) return;
+  const notes = [523, 587, 659, 698, 784, 880, 988, 1047];
+  const pattern = [0,2,4,3,2,4,5,4,2,0,1,2,3,2,1,0];
+  let time = ac.currentTime + 0.1;
+
+  function playNote(freq, t, dur) {
+    const o = ac.createOscillator();
+    const g = ac.createGain();
+    o.connect(g); g.connect(ac.destination);
+    o.type = 'triangle';
+    o.frequency.value = freq;
+    g.gain.setValueAtTime(0, t);
+    g.gain.linearRampToValueAtTime(0.12, t + 0.02);
+    g.gain.linearRampToValueAtTime(0.08, t + dur * 0.7);
+    g.gain.linearRampToValueAtTime(0, t + dur);
+    o.start(t); o.stop(t + dur);
+  }
+
+  // Play a looping melody snippet
+  (function loop() {
+    let t = ac.currentTime + 0.05;
+    pattern.forEach((idx, i) => {
+      playNote(notes[idx], t + i * 0.28, 0.26);
+      playNote(notes[idx] * 0.5, t + i * 0.28, 0.26);
+    });
+    setTimeout(loop, pattern.length * 280 + 100);
+  })();
+}
+
+// ===================== SPEECH =====================
+let speaking = false;
+function speakGreeting() {
+  if (!('speechSynthesis' in window)) {
+    showToast('உங்கள் browser speech ஆதரிக்கவில்லை');
+    return;
+  }
+  if (speaking) { window.speechSynthesis.cancel(); speaking = false; return; }
+  const btn = document.getElementById('speechBtn');
+  const name = document.getElementById('greetingName').textContent;
+  const sender = fromName ? fromName + ' உடன்' : '';
+  const text = `${name} அவர்களுக்கும் அவர்களுடைய குடும்பத்தினருக்கும் இனிய தமிழ் புத்தாண்டு நல்வாழ்த்துக்கள். ${sender}`;
+  const utt = new SpeechSynthesisUtterance(text);
+  utt.lang = 'ta-IN';
+  utt.rate = 0.85;
+  utt.pitch = 1.1;
+  utt.onstart = () => { speaking = true; btn.classList.add('speaking'); btn.textContent = '🔇 நிறுத்து (Stop)'; };
+  utt.onend = utt.onerror = () => { speaking = false; btn.classList.remove('speaking'); btn.textContent = '🔊 குரல் வாழ்த்து கேளுங்கள் (Listen)'; };
+  window.speechSynthesis.speak(utt);
+}
+
+// ===================== SHARING =====================
+function shareWhatsApp() {
+  const myName = encodeURIComponent(currentUserName || 'Friend');
+  const base = window.location.origin + window.location.pathname;
+  const link = `${base}?from=${myName}`;
+  const msg  = `🌸 இனிய தமிழ் புத்தாண்டு வாழ்த்துக்கள்! 🎉\n\nஇந்த வாழ்த்தை பாருங்கள்:\n${link}`;
+  const wa   = `https://wa.me/?text=${encodeURIComponent(msg)}`;
+  window.open(wa, '_blank');
+}
+
+// ===================== TOAST =====================
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+// ===================== MAIN FLOW =====================
+let currentUserName = '';
+
+function startCelebration() {
+  const input = document.getElementById('nameInput').value.trim();
+  if (!input) {
+    showToast('⚠️ உங்கள் பெயரை உள்ளிடவும்');
+    document.getElementById('nameInput').focus();
+    return;
+  }
+  currentUserName = input;
+
+  // Populate greeting
+  document.getElementById('greetingName').textContent = input;
+  if (fromName) {
+    document.getElementById('senderLine').innerHTML = `— <span class="sender-name">${fromName}</span> உடன் இணைந்து —`;
+  } else {
+    document.getElementById('senderLine').innerHTML = `— அன்புடன் வாழ்த்துகிறோம் —`;
+  }
+
+  // Switch pages
+  document.getElementById('page1').style.display = 'none';
+  document.getElementById('page2').classList.add('active');
+
+  // Unlock audio
+  const ac = getAudioCtx();
+  if (ac && ac.state === 'suspended') ac.resume();
+
+  // Kick off effects
+  startFlowerRain();
+  playBellSound();
+  setTimeout(playFestivalMusic, 800);
+  setTimeout(() => {
+    startFireworks();
+    speakGreeting();
+  }, 5000);
+}
+
+// ===================== ENTER KEY =====================
+document.getElementById('nameInput').addEventListener('keydown', e => {
+  if (e.key === 'Enter') startCelebration();
+});
+
+// ===================== PRE-FILL FROM URL =====================
+window.addEventListener('load', () => {
+  if (fromName) {
+    // Auto-show a personalized note on page 1
+    const card = document.querySelector('.title-card');
+    const note = document.createElement('div');
+    note.style.cssText = 'margin-top:10px;font-size:13px;color:#ffb74d;font-weight:600;';
+    note.textContent = `💌 ${fromName} அவர்களின் வாழ்த்துக்கள்!`;
+    card.appendChild(note);
+  }
+});
+</script>
+</body>
+</html>
