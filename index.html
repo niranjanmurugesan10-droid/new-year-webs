@@ -1002,34 +1002,17 @@ function playFireworkSound() {
   shimSrc.start(now + 0.35);
 }
 
+let festivalMusic;
+
 function playFestivalMusic() {
-  const ac = getAudioCtx(); if (!ac) return;
-  const notes = [523, 587, 659, 698, 784, 880, 988, 1047];
-  const pattern = [0,2,4,3,2,4,5,4,2,0,1,2,3,2,1,0];
-  let time = ac.currentTime + 0.1;
-
-  function playNote(freq, t, dur) {
-    const o = ac.createOscillator();
-    const g = ac.createGain();
-    o.connect(g); g.connect(ac.destination);
-    o.type = 'triangle';
-    o.frequency.value = freq;
-    g.gain.setValueAtTime(0, t);
-    g.gain.linearRampToValueAtTime(0.12, t + 0.02);
-    g.gain.linearRampToValueAtTime(0.08, t + dur * 0.7);
-    g.gain.linearRampToValueAtTime(0, t + dur);
-    o.start(t); o.stop(t + dur);
+  if (!festivalMusic) {
+    festivalMusic = new Audio('TAMILANSONG.mp4');
+    festivalMusic.loop = true;
+    festivalMusic.preload = 'auto';
+    festivalMusic.volume = 0.3;
   }
-
-  // Play a looping melody snippet
-  (function loop() {
-    let t = ac.currentTime + 0.05;
-    pattern.forEach((idx, i) => {
-      playNote(notes[idx], t + i * 0.28, 0.26);
-      playNote(notes[idx] * 0.5, t + i * 0.28, 0.26);
-    });
-    setTimeout(loop, pattern.length * 280 + 100);
-  })();
+  festivalMusic.currentTime = 0;
+  festivalMusic.play().catch(() => {});
 }
 
 // ===================== SPEECH =====================
@@ -1048,8 +1031,10 @@ function speakGreeting() {
   utt.lang = 'ta-IN';
   utt.rate = 0.85;
   utt.pitch = 1.1;
-  utt.onstart = () => { speaking = true; btn.classList.add('speaking'); btn.textContent = '🔇 நிறுத்து (Stop)'; };
-  utt.onend = utt.onerror = () => { speaking = false; btn.classList.remove('speaking'); btn.textContent = '🔊 குரல் வாழ்த்து கேளுங்கள் (Listen)'; };
+  utt.volume = 1;
+  const musicVolumeBeforeSpeech = festivalMusic ? festivalMusic.volume : null;
+  utt.onstart = () => { speaking = true; if (festivalMusic) festivalMusic.volume = 0.12; btn.classList.add('speaking'); btn.textContent = '🔇 நிறுத்து (Stop)'; };
+  utt.onend = utt.onerror = () => { speaking = false; if (festivalMusic && musicVolumeBeforeSpeech !== null) festivalMusic.volume = musicVolumeBeforeSpeech; btn.classList.remove('speaking'); btn.textContent = '🔊 குரல் வாழ்த்து கேளுங்கள் (Listen)'; };
   window.speechSynthesis.speak(utt);
 }
 
